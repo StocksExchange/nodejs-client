@@ -1,6 +1,6 @@
 {
-  "name": "@stocks_exchange/stocks-exchange-client",
-  "version": "2.4.1",
+  "name": "stocks-exchange-client",
+  "version": "2.4.2",
   "description": "STEX (former Stocks.Exchange) provides all the core exchange functionality, and additional merchant tools available via the HTTPS API where all returned messages are in JSON. It's much easier to work with the API by using one of the clients provided by StocksExchange, so while this page describes the API in case you want or need to build your own client, the examples use the NodeJS client.",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/StocksExchange/nodejs-client.git"
+    "url": "git+ssh://git@github.com:StocksExchange/nodejs-client.git"
   },
   "keywords": [
     "api",
@@ -40,12 +40,5 @@
     "pkg": "^4.3.3",
     "request": "^2.87.0",
     "socket.io-client": "^2.2.0"
-  },
-  "bugs": {
-    "url": "https://github.com/StocksExchange/nodejs-client/issues"
-  },
-  "directories": {
-    "lib": "lib",
-    "test": "tests"
   }
 }
