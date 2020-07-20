@@ -17,13 +17,11 @@ STEX (former Stocks.Exchange) provides all the core exchange functionality, and 
 ## General
 The base URL for all the requests other than public methods is 
 ```
-https://app.stex.com/api2
 https://api3.stex.com
 ```
 
 ## Getting started
-- [Documentation API V2](http://help.stex.com/api-integration).
-- [Sandbox API V3](https://apidocs.stex.com)
+- [Sandbox API](https://apidocs.stex.com)
 
 To get started with the Node JS API client, here's a snippet for creating a client with existing credentials:
 > In order to use the API functions, you must have an API key and API secret, which is generated in the user profile.
@@ -35,144 +33,7 @@ npm install stocks-exchange-client --save
 
 After install use for example this code!
 
-### Example API V2
-```javascript
-const stocks = require('stocks-exchange-client').client,
-    option = {
-        api_key:'123456789',
-        api_secret:'123456789'
-    },
-    se = new stocks(option, 'https://app.stex.com/api2', 2);
-
-    se.userInfo(function (res) {
-        console.log(res);
-    });
-
-//Other methods
-// ===================================================================================
-// Use it to get the recommended retail exchange rates for all currency pairs.
-se.ticker(function (res) {
-    console.log(res);
-});
-
-// Get all available currencies with additional info.
-se.currencies(function (res) {
-    console.log(res);
-});
-
-// Get all available currency pairs with additional info.
-se.markets(function (res) {
-    console.log(res);
-});
-
-// Get currency pair with additional info.
-// Params Currency1 and Currency2
-se.marketSummary('BTC', 'USDT', function (res) {
-    console.log(res);
-});
-
-// Use it to get the new retail exchange rates for all currency pairs.
-se.prices(function (res) {
-    console.log(res);
-});
-
-// Used to retrieve the latest trades that have occurred for a specific market. 
-// Params Pair
-se.tradeHistoryPub('BTC_USDT', function (res) {
-    console.log(res);
-});
-
-// Used to get retrieve the orderbook for a given market.
-// Params Pair
-se.orderbook('BTC_USDT', function (res) {
-    console.log(res);
-});
-
-// Get information about trade statistic
-// Params: pair, count, order, interval, page, since, end
-se.graficPublic({}, function (res) {
-    console.log(res);
-});
-
-// Get information about your account.
-se.userInfo(function (res) {
-    console.log(res);
-});
-
-// Get information about active orders.
-// Params: pair, count, order, type, owner, since, end
-se.activeOrders({}, function (res) {
-    console.log(res);
-});
-
-// Create orders for the purchase and sale.
-// Params: type, pair, amount, rate
-se.trade({}, function (res) {
-    console.log(res);
-});
-
-// Cancel selected order.
-// Params: order_id
-se.cancelOrder(7610075, function (res) {
-    console.log(res);
-});
-
-// Get information about all orders.
-// Params: pair, count, order, status, owner, since, end
-se.tradeHistory({}, function (res) {
-    console.log(res);
-});
-
-// Get information about all closed orders from Register
-// Params: currency, since, end
-se.tradeRegisterHistory({}, function (res) {
-    console.log(res);
-});
-
-// Get information about all orders User 
-// Params: since, end
-se.userHistory({}, function (res) {
-    console.log(res);
-});
-
-// Get information about your deposits and withdrawals.
-// Params: currency, count, order, operation, status
-se.transHistory({}, function (res) {
-    console.log(res);
-});
-
-// Get information about trade statistic.
-// Params: currency, count, order, operation, status, since, end
-se.grafic({}, function (res) {
-    console.log(res);
-});
-
-// Generate currency wallet address.
-// Params: currency
-se.generateWallets('ONION', function (res) {
-    console.log(res);
-});
-
-// Get information about your wallet to deposit funds.
-// Params: currency
-se.deposit('ONION', function (res) {
-    console.log(res);
-});
-
-// Withdraw your funds.
-// Params: currency, address, amount
-se.withdraw('ONION', '123456890', '1.0', function (res) {
-    console.log(res);
-});
-
-// Restore password (disable method)
-// Params: email
-se.remindPassword('test@gmail.com', function (res) {
-    console.log(res);
-});
-```
-
-### Example WebSocket API V3
+### Example WebSocket API
 ```javascript
 const StocksExchange = require('stocks-exchange-client').client;
 const option = {
@@ -187,7 +48,7 @@ const option = {
     accessTokenUrl: 'https://api3.stex.com/oauth/token',
     scope: 'trade profile reports withdrawal',
 };
-const se = new StocksExchange(option, null, 3);
+const se = new StocksExchange(option, null);
 se.subscribeOrderFillCreated(702,function (res) {
     console.log('subscribeOrderFillCreated', res);
 });
@@ -225,7 +86,7 @@ se.subscribeUserOrderFillCreated(0, 702, function (res) {
 });
 ```
 
-### Example API V3
+### Example API
 ```javascript
 const StocksExchange = require('stocks-exchange-client').client;
 const option = {
@@ -240,7 +101,7 @@ const option = {
     accessTokenUrl: 'https://api3.stex.com/oauth/token',
     scope: 'push',
 };
-const se = new StocksExchange(option, null, 3);
+const se = new StocksExchange(option, null);
 
 // Get general information about the current user
 se.profileInfo(function (res) {
@@ -431,7 +292,7 @@ se.publicCurrency(function (res) {
 });
 ```
 
-### Example API V3 use Server-To-Server integrations
+### Example API use Server-To-Server integrations
 ```javascript
     const StocksExchange = require('stocks-exchange-client').client;
     const option = {
@@ -442,7 +303,7 @@ se.publicCurrency(function (res) {
         scope: 'profile trade withdrawal reports push settings',
         s2s:true
     };
-    const se = new StocksExchange(option, null, 3);
+    const se = new StocksExchange(option, null);
 ```
 
 ## Common Errors
